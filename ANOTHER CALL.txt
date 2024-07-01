@@ -1,0 +1,34 @@
+Jika kita ingin membuat notifikasi pada buku, yang dimana ketika jumlah buku tidak mecukupi untuk dipinjam maka 
+akan muncul notif "buku ini telah dipinjam"
+
+CODE : 
+
+(Loc : t_peminjaman/form_peminjaman)
+
+menggunakan script 
+
+<script> 
+
+$('$id_buku').change(function(){
+	var id = $(this).val.();
+	$.ajax({
+
+	url : '<?= base_url()?>~controller kalian~/nama_variabel kalian(jumlah_buku)',
+	data : {id:id},
+	method : 'post',
+	dataType : 'json',
+	success:function(hasil){
+		var jumlah = JSON.stringfy(hasil.jumlah);
+		var jumlah1 = jumlah.split('"').join('');
+		if (jumlah1 <= 0){
+			alert('Maaf, Buku ini telah dipinjam');
+			location.reload();
+}
+}
+});
+});
+
+}
+
+
+</script> 
